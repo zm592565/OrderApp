@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>偏好设置</title>
+		<link rel="stylesheet" href="css/jquery.range.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body>
+		<header>
+			<div></div>
+			<cite>偏好设置</cite>
+			<div></div>
+		</header>
+		<div class="container container_top">
+			
+			<div class="pt10">
+				<div class="mark_box bd-t">
+					<div class="mark_title">可用金额</div>
+					<div class="huakuai">
+						<input class="range-slider" type="hidden" autocomplete='off' name="telInput" id="telInput" value="7,10"/>
+					</div>
+				</div>
+			</div>
+			<div class="pt10">
+				<div class="mark_box bd-t">
+					<div class="mark_title_time">理财周期</div>
+					<div id="check_btn_box">
+						<button class="line_btn">3个月</button>
+						<button class="line_btn line_btn_active">6个月</button>
+						<button class="line_btn">1年以上</button>
+					</div>
+					
+				</div>
+			</div>
+			
+			<button class="quite btn_blue">搜一搜</button>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.range.js" ></script>
+		<script>
+			$(function(){
+					
+					var bodyRangeWidth=parseInt($('.mark_box .huakuai').width());
+				
+					$('.range-slider').jRange({
+						from: 7,
+						to: 10,
+						step: 1,
+//						scale: [0,25,50,75,100],
+						format: '%s',
+						width: bodyRangeWidth,
+						showLabels: true,
+						isRange : true,
+						showScale: false
+					});
+					
+					$('#check_btn_box .line_btn').on('click',function(){
+						$(this).addClass('line_btn_active').siblings().removeClass('line_btn_active');
+					})
+					
+			});
+			
+			
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>产品详情页</title>
+		<link rel="stylesheet" href="css/jquery.range.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<style type="text/css">
+            input[type="range"] {
+                margin-top: 2px;
+                background-color: #019efd;
+                border-radius: 15px;
+                width: 80%;
+                -webkit-appearance: none;
+                height:7px;
+            }
+            input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                cursor: default;
+                height: 21px;
+                width: 21px;
+                margin-top: 8px;
+                transform: translateY(-4px);
+                background: #fff;
+                border: 1px solid #019efd;
+                border-radius: 50%;       
+            }
+        </style>
+	</head>
+	<body>
+		<header>
+			<a class="back"></a>
+			<cite>如意宝</cite>
+			<div class="header_right"></div>
+		</header>
+		<div class="container container_top" style="padding-bottom: 20px;">
+			<div class="show_info">
+				
+				<div class="bank_name">
+					<p>民生银行</p>
+					<abbr>类型-银行理财</abbr>
+					<abbr>风险评级-低</abbr>
+				</div>
+				<button class="add_bank"><img src="img/collection_no.png"/>收藏</button>
+				<div class="obval">
+					<div class="ob_box">
+						<p>3.98%</p>
+						<abbr>年化收益率</abbr>
+					</div>
+				</div>
+				<div class="info_bottom">
+					<ul>
+						<li>
+							<img src="img/qixian.png" />
+							期限:364天
+						</li>
+						<li>
+							<img src="img/jine.png" />
+							起投金额:5万元
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="show_text">
+				本理财产品投资对象为债券、
+				货币市场金融工具等高流动资产，
+				以及符合监管要求的债权类资产。
+				上述投资工具的年化收益率在4%-6%之间。
+			</div>
+			
+			<div class="echart_box bd-t" id="demo" style="height: 300px;"></div>
+			<div class="echart_box bd-t" style="margin-top: 10px;">
+				<div class="touru">
+					投入本金：<cite>90000</cite>元
+				</div>
+				<input type="range" class="range_box" min="0" max="1000" autocomplete="off" step="100" onchange="demo(this.value);"/>
+				<div class="touru" style="padding-top: 20px;line-height: initial;">
+					预期收益：<cite>90000</cite>元
+				</div>
+			</div>
+			<div class="show_title pt10 bd-t">
+				同类产品中，这些比此产品收益更高
+				<a href="#">更多</a>
+			</div>
+			<div class="bank_list">
+				<a class="bd-t" href="#">
+					<img src="img/bank_nob.jpg" />
+					<div class="show_bank_text">民生银行-如意宝</div>
+					<div class="bank_more">4.7%</div>
+				</a>
+				<a class="bd-t" href="#">
+					<img src="img/bank_nob.jpg" />
+					<div class="show_bank_text">民生银行-如意宝</div>
+					<div class="bank_more">4.7%</div>
+				</a>
+			</div>
+			<div class="show_title pt10 bd-t">
+				评论
+				<a href="#">更多</a>
+			</div>
+			<div class="comment">
+				<a href="#" class="bd-t">
+					<div class="comment_left">
+						<img src="img/avatar.png" />
+						<div class="comment_name">Xhacker</div>
+					</div>
+					<div class="comment_info">
+						民生的还可以，买了一些，比P2P安全太多民生的还可以，我就买了一些，比P2P安全太多。
+					</div>
+				</a>
+				<a href="#" class="bd-t">
+					<div class="comment_left">
+						<img src="img/avatar.png" />
+						<div class="comment_name">Xhacker</div>
+					</div>
+					<div class="comment_info">
+						民生的还可以，买了一些，比P2P安全太多民生的还可以，我就买了一些，比P2P安全太多。
+					</div>
+				</a>
+				<a href="#" class="bd-t">
+					<div class="comment_left">
+						<img src="img/avatar.png" />
+						<div class="comment_name">Xhacker</div>
+					</div>
+					
+					<div class="comment_info">
+						民生的还可以，买了一些，比P2P安全太多民生的还可以，我就买了一些，比P2P安全太多。
+					</div>
+				</a>
+			</div>
+			<button class="quite btn_blue">立即购买</button>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js" ></script>
+	<script type="text/javascript" src="js/echarts.min.js" ></script>
+	<script type="text/javascript" src="js/ecStat.min.js" ></script>
+	<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var app = echarts.init(document.getElementById('demo'));
+        
+       app.title = '折柱混合';
+
+option = {
+	backgroundColor:'#fff',
+    xAxis: [
+        {
+            type: 'category',
+            data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+            axisPointer: {
+                type: 'shadow'
+            }
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name: '水量',
+            min: 0,
+            max: 250,
+            interval: 50,
+            axisLabel: {
+                formatter: '{value} ml'
+            }
+        },
+        {
+            type: 'value',
+            name: '温度',
+            min: 0,
+            max: 25,
+            interval: 5,
+            axisLabel: {
+                formatter: '{value} °C'
+            }
+        }
+    ],
+    series: [
+        {
+            name:'蒸发量',
+            type:'bar',
+            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+        },
+        {
+            name:'降水量',
+            type:'bar',
+            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+        },
+        {
+            name:'平均温度',
+            type:'line',
+            yAxisIndex: 1,
+            data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+        }
+    ]
+};
+
+
+
+       // 使用刚指定的配置项和数据显示图表。
+        app.setOption(option);
+        
+        function demo(obj){
+        	$('.echart_box .touru:first-child').find('cite').text(obj);
+        	$('.echart_box .touru').eq(1).find('cite').text(obj*0.5);    	
+        }
+        
+    </script>
+</html>
